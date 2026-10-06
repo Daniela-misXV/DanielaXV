@@ -14,15 +14,15 @@ document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',
 if(!reduced){for(let i=0;i<18;i++){const s=document.createElement('i');s.className='spark';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*7+'s';s.setAttribute('aria-hidden','true');$('.hero').append(s)}}
 
 const rsvpForm=$('#rsvp'),sendRsvp=$('#send-rsvp'),receipt=$('#rsvp-receipt'),rsvpStatus=$('#rsvp-status');
-let awaitingReply=false;
+let awaitingReply=false,receiptTimer;
 rsvpForm.addEventListener('submit',e=>{
 const guest=$('#guest');guest.value=guest.value.trim();
 if(!guest.value){e.preventDefault();guest.setCustomValidity('Escribe tu nombre y apellidos.');guest.reportValidity();return}
 if(!navigator.onLine){e.preventDefault();rsvpStatus.textContent='No hay conexión. Intenta de nuevo cuando tengas internet.';return}
 if(awaitingReply){e.preventDefault();return}
 awaitingReply=true;sendRsvp.disabled=true;sendRsvp.textContent='Enviando…';rsvpStatus.textContent='Espera la confirmación de Google.';
-receipt.hidden=false;rsvpForm.hidden=true;
+receipt.hidden=false;rsvpForm.hidden=true;$('#receipt-message').textContent='Un momento, por favor…';$('#receipt-details').open=false;clearTimeout(receiptTimer);receiptTimer=setTimeout(()=>{if(awaitingReply){$('#receipt-message').textContent='El envío está tardando';$('#receipt-details').open=true;}},20000);
 });
 $('#guest').addEventListener('input',()=>$('#guest').setCustomValidity(''));
-$('#rsvp-result').addEventListener('load',()=>{if(!awaitingReply)return;awaitingReply=false;sendRsvp.disabled=false;sendRsvp.textContent='Enviar';rsvpStatus.textContent='';});
-$('#rsvp-back').addEventListener('click',()=>{receipt.hidden=true;rsvpForm.hidden=false;awaitingReply=false;sendRsvp.disabled=false;sendRsvp.textContent='Enviar';rsvpStatus.textContent='';$('#guest').focus();});
+$('#rsvp-result').addEventListener('load',()=>{if(!awaitingReply)return;awaitingReply=false;clearTimeout(receiptTimer);$('#receipt-message').textContent='Gracias por su respuesta';sendRsvp.disabled=false;sendRsvp.textContent='Enviar';rsvpStatus.textContent='';});
+$('#rsvp-back').addEventListener('click',()=>{receipt.hidden=true;rsvpForm.hidden=false;clearTimeout(receiptTimer);awaitingReply=false;sendRsvp.disabled=false;sendRsvp.textContent='Enviar';rsvpStatus.textContent='';$('#guest').focus();});

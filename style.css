@@ -86,3 +86,18 @@ h2,.caps,.calendar-heading,.calendar,.week{color:#173961}
 .receipt-title{font:28px Brand,Georgia,serif}
 dialog{background:#eef4fa;color:#173961}
 @media(max-width:600px){.rsvp form{margin-top:48px}.rsvp label,.rsvp legend{font-size:21px}.rsvp .radio-option{font-size:19px}.rsvp input:not([type=radio]){width:92%}.rsvp form .button{font-size:23px}.birthday-art{top:2%;left:3%;width:94%}.hero-title{padding-bottom:23px}}
+
+/* Una segunda capa de la misma foto conserva el rostro delante del título. */
+.portrait-stage{isolation:isolate}
+.birthday-art{z-index:1}
+.portrait-foreground{position:absolute;inset:0;display:block;width:100%;height:auto;z-index:2;pointer-events:none;clip-path:polygon(58.6% 8.2%,59.3% 8.4%,59.8% 9.7%,60.6% 10.3%,60.1% 11.4%,62.1% 11.8%,62.4% 13.1%,63.8% 14.1%,64.1% 15.2%,65.7% 16%,66.1% 18.5%,68% 21%,70.7% 25%,73% 36%,66% 42%,53% 38%,49% 32.2%,47% 31%,47.2% 28.4%,45.7% 27.7%,46.5% 26.6%,43.7% 25.5%,44.2% 24.5%,45.6% 23.6%,46% 21.5%,45.3% 19.2%,46.5% 17.1%,48.6% 15.6%,51% 14.3%,53.6% 13.7%,55.4% 13.9%,55.9% 12.1%,56.7% 11.6%,57.3% 10.1%,58% 10%,58% 9%)}
+#rsvp-receipt{padding:24px 8px 12px;margin-top:20px;text-align:center}
+.receipt-ornament{display:block;color:#b69558;font:52px/1 Georgia,serif;margin-bottom:14px}
+#rsvp-receipt .receipt-title{font:normal 31px/1.3 Brand,Georgia,serif;color:#193e6d;max-width:390px;margin:0 auto 15px}
+#rsvp-receipt .receipt-signature{font:35px/1.3 Allura,cursive;color:#57748e;margin:8px auto 26px}
+#receipt-details{border:0;margin:0 auto;max-width:570px}
+#receipt-details summary{cursor:pointer;list-style:none;color:#647b90;text-decoration:underline;text-underline-offset:4px;font:13px/1.5 Georgia,serif;padding:10px}
+#receipt-details summary::-webkit-details-marker{display:none}
+#receipt-details[open] #rsvp-result{margin-top:15px}
+.receipt-back{display:block;border:0;background:transparent;color:#647b90;font:13px/1.5 Georgia,serif;margin:9px auto 0;padding:9px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:600px){#rsvp-receipt .receipt-title{font-size:27px}#rsvp-receipt .receipt-signature{font-size:31px}}
