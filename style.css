@@ -53,3 +53,36 @@ h2{font-size:32px}.rsvp h2{font-size:27px}.rsvp-deadline{font-size:19px}
 .calendar{font-size:29px}.week{font-size:31px}.week,#calendar-days{gap:3px}.calendar span{min-height:43px}.calendar .chosen::before{font-size:53px}
 .form-frame{margin-inline:-10px}.form-frame iframe{height:1060px}.rsvp-rose{width:105px}
 }
+
+/* Tema azul y gráficos originales suministrados por la familia. */
+body{background:#10233e;color:#193653}
+.paper::before{filter:hue-rotate(205deg) saturate(.5)}
+.blue,.rsvp-rose{filter:hue-rotate(205deg) saturate(.85)}
+.paper section,.paper footer{background:#eff5fbba;border-color:#7d9eba;box-shadow:0 7px 28px #17335112}
+.paper .intro,.paper .family,.paper .memories,.paper footer{background:#eff5fba6}
+h2,.caps,.calendar-heading,.calendar,.week{color:#173961}
+.calendar-year{color:#48657c}
+.week span:first-child,#calendar-days span:nth-child(7n+1){color:#356ba0}
+.countdown div{background:#193e6d;border-color:#c7a266}
+.button,#music{background:#193e6d;border-color:#b69962;color:#fff8e9}
+.button:hover{background:#285489}.button:disabled{opacity:.65;cursor:wait;transform:none}
+.birthday-art{position:absolute;top:2%;left:5%;width:90%;height:auto;mix-blend-mode:screen;pointer-events:none}
+.hero-title h1{font:inherit;background:none;-webkit-text-fill-color:initial;filter:none;margin:0}
+.name-art{display:block;width:min(100%,700px);height:auto;margin:0 auto;mix-blend-mode:screen}
+.hero-title{padding-top:8px}.hero-title .surname{margin-top:0}
+.rsvp h2{max-width:520px;margin:10px auto 24px}
+.rsvp form{max-width:510px;position:relative;z-index:2;margin:65px auto 0}
+.rsvp label,.rsvp legend{font:italic 25px/1.5 Georgia,serif;color:#173961}
+.rsvp label[for=guest]{text-align:center}
+.rsvp input:not([type=radio]){display:block;width:85%;margin:24px auto 42px;background:#f2f7ff45;border:1px solid #8aa3b9;min-height:58px}
+.rsvp fieldset{border:0;padding:0;margin:20px 0 30px;min-width:0}
+.rsvp legend{text-align:center;width:100%;margin-bottom:12px}
+.rsvp .radio-option{display:flex;align-items:center;gap:14px;font-size:22px;margin:15px 0}
+.rsvp input[type=radio]{width:23px;height:23px;flex:0 0 23px;accent-color:#214d79;margin:0;padding:0}
+.rsvp label>span[aria-hidden],.rsvp legend>span{color:#a23036}
+.rsvp form .button{display:block;width:auto;min-width:140px;margin:38px auto 0;font:bold italic 25px/1.4 Georgia,serif;padding:12px 28px}
+#rsvp-receipt{position:relative;z-index:2;margin-top:35px}
+#rsvp-result{display:block;width:100%;height:480px;border:1px solid #9ab0c5;border-radius:12px;background:#f5f8fc}
+.receipt-title{font:28px Brand,Georgia,serif}
+dialog{background:#eef4fa;color:#173961}
+@media(max-width:600px){.rsvp form{margin-top:48px}.rsvp label,.rsvp legend{font-size:21px}.rsvp .radio-option{font-size:19px}.rsvp input:not([type=radio]){width:92%}.rsvp form .button{font-size:23px}.birthday-art{top:2%;left:3%;width:94%}.hero-title{padding-bottom:23px}}

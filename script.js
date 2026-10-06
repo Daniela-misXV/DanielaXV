@@ -12,3 +12,17 @@ $('#gift-open').addEventListener('click',()=>$('#gift-dialog').showModal());docu
 $('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('971486394');$('#copy-status').textContent='Número copiado: 971 486 394'}catch{$('#copy-status').textContent='Mantén pulsado el número para copiarlo: 971 486 394'}});
 document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{$('#large-photo').src=b.querySelector('img').src;$('#large-photo').alt=b.querySelector('img').alt;$('#photo-dialog').showModal()}));
 if(!reduced){for(let i=0;i<18;i++){const s=document.createElement('i');s.className='spark';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*7+'s';s.setAttribute('aria-hidden','true');$('.hero').append(s)}}
+
+const rsvpForm=$('#rsvp'),sendRsvp=$('#send-rsvp'),receipt=$('#rsvp-receipt'),rsvpStatus=$('#rsvp-status');
+let awaitingReply=false;
+rsvpForm.addEventListener('submit',e=>{
+const guest=$('#guest');guest.value=guest.value.trim();
+if(!guest.value){e.preventDefault();guest.setCustomValidity('Escribe tu nombre y apellidos.');guest.reportValidity();return}
+if(!navigator.onLine){e.preventDefault();rsvpStatus.textContent='No hay conexión. Intenta de nuevo cuando tengas internet.';return}
+if(awaitingReply){e.preventDefault();return}
+awaitingReply=true;sendRsvp.disabled=true;sendRsvp.textContent='Enviando…';rsvpStatus.textContent='Espera la confirmación de Google.';
+receipt.hidden=false;rsvpForm.hidden=true;
+});
+$('#guest').addEventListener('input',()=>$('#guest').setCustomValidity(''));
+$('#rsvp-result').addEventListener('load',()=>{if(!awaitingReply)return;awaitingReply=false;sendRsvp.disabled=false;sendRsvp.textContent='Enviar';rsvpStatus.textContent='';});
+$('#rsvp-back').addEventListener('click',()=>{receipt.hidden=true;rsvpForm.hidden=false;awaitingReply=false;sendRsvp.disabled=false;sendRsvp.textContent='Enviar';rsvpStatus.textContent='';$('#guest').focus();});
